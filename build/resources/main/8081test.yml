@@ -1,0 +1,6 @@
+server:
+  address: localhost
+  port: 8081
+spring:
+  config:
+    import: some-yml-that-doesnt-exist.yml

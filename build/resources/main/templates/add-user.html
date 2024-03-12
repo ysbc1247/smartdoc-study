@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta content="ie=edge" http-equiv="x-ua-compatible">
+    <title>Regsiter User</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link href="https://cdn.jsdelivr.net/webjars/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet"
+          th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" type="text/css"/>
+    <script src="https://cdn.jsdelivr.net/webjars/bootstrap/4.1.0/js/bootstrap.min.js"
+            th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    <script src="https://cdn.jsdelivr.net/webjars/jquery/3.3.1/jquery.min.js"
+            th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-dark bg-dark navbar-expand-sm">
+    <a class="navbar-brand brand-text" href="#">
+        <img alt="logo" height="30" src="/images/logo.png" width="30">
+        Course Tracker
+    </a>
+    <button aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"
+            data-target="#navbar-list" data-toggle="collapse" type="button">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-between" id="navbar-list">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="#" th:href="@{/index}">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" th:href="@{/addcourse}">Add Course</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container my-5">
+
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6 bg-dark text-light text-center border rounded-top border-bottom-0 border-dark p-1">
+            <h5 class="mb-1 text-center">Register User</h5>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6 border rounded-bottom border-dark p-3">
+            <form action="#" method="POST" th:action="@{/adduser}" th:object="${user}">
+                <div th:if="${param.success}">
+                        Registration completed. You can now <a href="/login" th:href="@{/login}">login</a>
+                </div>
+                <div th:if="${param.validate}" >
+                        Account Created. Check your email for account activation
+                </div>
+                <div th:if="${param.incorrectCaptcha}" >
+                        Captcha validation failed
+                </div>
+                <div class="form-group">
+                    <label for="inputFirstname">Firstname</label>
+                    <input autofocus class="form-control" id="inputFirstname" placeholder="Enter First Name"
+                           th:field="*{firstName}" type="text">
+                    <span class="text-danger" th:errors="*{firstName}" th:if="${#fields.hasErrors('firstName')}"></span>
+                </div>
+                <div class="form-group">
+                    <label for="inputLastname">Lastname</label>
+                    <input class="form-control" id="inputLastname" placeholder="Enter Last Name" th:field="*{lastName}"
+                           type="text">
+                    <span class="text-danger" th:errors="*{lastName}" th:if="${#fields.hasErrors('lastName')}"></span>
+                </div>
+                <div class="form-group">
+                    <label for="inputUsername">Username</label>
+                    <input class="form-control" id="inputUsername" placeholder="Enter Username" th:field="*{username}"
+                           type="text">
+                    <span class="text-danger" th:errors="*{username}" th:if="${#fields.hasErrors('username')}"></span>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail">Email Address</label>
+                    <input class="form-control" id="inputEmail" placeholder="Enter Email" th:field="*{email}"
+                           type="email">
+                    <span class="text-danger" th:errors="*{email}" th:if="${#fields.hasErrors('email')}"></span>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword">Password</label>
+                    <input class="form-control" id="inputPassword" placeholder="Password" th:field="*{password}"
+                           type="password">
+                    <span class="text-danger" th:errors="*{password}" th:if="${#fields.hasErrors('password')}"></span>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input class="form-control" id="confirmPassword" placeholder="Confirm Password"
+                           th:field="*{confirmPassword}" type="password">
+                    <span class="text-danger" th:errors="*{confirmPassword}"
+                          th:if="${#fields.hasErrors('confirmPassword')}"></span>
+                </div>
+                <div class="g-recaptcha mb-2" data-sitekey="6LdrdIEpAAAAAO9-Seh_4FccCiSDut9MU4oFk4F9"></div>
+                <div class="form-group text-center">
+                    <input class="btn btn-dark center" type="submit" value="Sign Up"/>
+                    <p>Already have an account? <a href="/login">Sign in</a></p>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>
+</body>
+</html>

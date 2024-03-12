@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta content="ie=edge" http-equiv="x-ua-compatible">
+    <title>Login</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link href="https://cdn.jsdelivr.net/webjars/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet"
+          th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" type="text/css"/>
+    <script src="https://cdn.jsdelivr.net/webjars/bootstrap/4.1.0/js/bootstrap.min.js"
+            th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    <script src="https://cdn.jsdelivr.net/webjars/jquery/3.3.1/jquery.min.js"
+            th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script async defer src="https://www.google.com/recaptcha/api.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-dark bg-dark navbar-expand-sm">
+    <a class="navbar-brand brand-text" href="#">
+        <img alt="logo" height="30" src="/images/logo.png" width="30">
+        Course Tracker
+    </a>
+    <button aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"
+            data-target="#navbar-list" data-toggle="collapse" type="button">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-between" id="navbar-list">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="#" th:href="@{/index}">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" th:href="@{/addcourse}">Add Course</a>
+            </li>
+        </ul>
+        <!--ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="#" th:href="@{/adduser}">Register</a>
+            </li>
+        </ul-->
+    </div>
+</nav>
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6 bg-dark text-light text-center border rounded-top border-bottom-0 border-dark p-1">
+            <h5 class="mb-1 text-center">Login</h5>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6 border rounded-bottom border-dark p-3">
+            <div class="alert alert-danger" th:if="${loginError}">Wrong Username or Password</div>
+            <div class="alert alert-success" th:if="${loginVerified}">Account has been verified. Please sign-in</div>
+            <div class="alert alert-danger" th:if="${loginDisabled}">Account is not yet active. Please check your
+                email
+            </div>
+            <div class="alert alert-danger" th:if="${loginLocked}">Account locked due to multiple incorrect login
+                attempts.
+            </div>
+
+            <form method="post" th:action="@{/login}">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input autofocus class="form-control" name="username" placeholder="Enter Username" required
+                           type="text">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input autofocus class="form-control" name="password" placeholder="Enter Password" required
+                           type="password">
+                </div>
+                <div>
+                    <input class="form-check-input" name="remember-me" type="checkbox">
+                    <label class="form-check-label" for="remember-me">Remember Me</label>
+                </div>
+                <div class="text-center">
+                    <button class="btn btn-dark" type="submit">Submit</button>
+                    <a class="btn btn-success" href="#" th:href="@{/adduser}">Register</a>
+                </div>
+                <div class="text-center pt-4">
+                    <a class="btn btn-block btn-dark" href="/oauth2/authorization/google">Login with Google</a>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>
+</body>
+</html>

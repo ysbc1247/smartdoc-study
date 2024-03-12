@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Main-Class: org.springframework.boot.loader.launch.WarLauncher
+Start-Class: com.springbootstudy2024.springbootstudy2024.SpringBootStudy
+ 2024ApplicationKt
+Spring-Boot-Version: 3.2.2
+Spring-Boot-Classes: WEB-INF/classes/
+Spring-Boot-Lib: WEB-INF/lib/
+Spring-Boot-Classpath-Index: WEB-INF/classpath.idx
+Spring-Boot-Layers-Index: WEB-INF/layers.idx
+Build-Jdk-Spec: 17
+Implementation-Title: spring-boot-study-2024
+Implementation-Version: 0.0.1-SNAPSHOT
+

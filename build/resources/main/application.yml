@@ -1,0 +1,68 @@
+server:
+  address: localhost
+  port: 8080
+spring:
+  config:
+    import: some-yml-that-doesnt-exist.yml
+  datasource:
+    url: jdbc:h2:mem:KyungRulDB
+    driver-class-name: org.h2.Driver
+    username: kyungrul
+    password: 1234
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 359047553141-5a6asp0dc2vs8cikg1hndfhjt9t4nsia.apps.googleusercontent.com
+            client-secret: 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
+            scope: email, profile
+  h2:
+    console:
+      enabled: true
+  sql:
+    init:
+      schema-locations: classpath:db-init-scripts/schema.sql
+      data-locations: classpath:db-init-scripts/data.sql
+db:
+  connection-info:
+    ip: localhost
+    port: 9090
+    user: admin
+    password: admin
+db2:
+  connection-info:
+    ip: localhost
+    port: 9090
+    user: admin
+    password: admin
+management:
+  endpoints:
+    web:
+      exposure:
+        include: info, health, releaseNotes, metrics, prometheus
+  info:
+    env:
+      enabled: true
+
+info:
+  app:
+    name: Almighty Developer
+    description: Spring Boot Study
+    version: 0.0.1
+
+  db:
+    connection-info:
+      ip: ${db.connection-info.ip}
+      port: ${db.connection-info.port}
+      user: ${db.connection-info.user}
+      password: ${db.connection-info.password}
+
+  build:
+    artifact: ${project.artifactId}
+    version: ${project.version}
+    name: ${project.name}
+    group: ${project.groupId}
+  properties:
+    java:
+      version: ${java.version}
