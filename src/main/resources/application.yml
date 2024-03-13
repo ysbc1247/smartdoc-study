@@ -66,5 +66,9 @@
 #  properties:
 #    java:
 #      version: ${java.version}
+spring:
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+
 server:
   port: 8082
