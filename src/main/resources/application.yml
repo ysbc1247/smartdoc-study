@@ -1,6 +1,6 @@
-server:
-  address: localhost
-  port: 8080
+#server:
+#  address: localhost
+#  port: 8080
 #spring:
 #  config:
 #    import: some-yml-that-doesnt-exist.yml
@@ -36,33 +36,35 @@ server:
 #    port: 9090
 #    user: admin
 #    password: admin
-management:
-  endpoints:
-    web:
-      exposure:
-        include: info, health, releaseNotes, metrics, prometheus
-  info:
-    env:
-      enabled: true
-
-info:
-  app:
-    name: Almighty Developer
-    description: Spring Boot Study
-    version: 0.0.1
-
-  db:
-    connection-info:
-      ip: ${db.connection-info.ip}
-      port: ${db.connection-info.port}
-      user: ${db.connection-info.user}
-      password: ${db.connection-info.password}
-
-  build:
-    artifact: ${project.artifactId}
-    version: ${project.version}
-    name: ${project.name}
-    group: ${project.groupId}
-  properties:
-    java:
-      version: ${java.version}
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: info, health, releaseNotes, metrics, prometheus
+#  info:
+#    env:
+#      enabled: true
+#
+#info:
+#  app:
+#    name: Almighty Developer
+#    description: Spring Boot Study
+#    version: 0.0.1
+#
+#  db:
+#    connection-info:
+#      ip: ${db.connection-info.ip}
+#      port: ${db.connection-info.port}
+#      user: ${db.connection-info.user}
+#      password: ${db.connection-info.password}
+#
+#  build:
+#    artifact: ${project.artifactId}
+#    version: ${project.version}
+#    name: ${project.name}
+#    group: ${project.groupId}
+#  properties:
+#    java:
+#      version: ${java.version}
+server:
+  port: 8082
